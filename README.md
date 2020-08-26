@@ -1,3 +1,3 @@
-# CoPrices
+# :bar_chart: CoPrices
 
-A place where you can see the price of you coins and convert them.
+A place where you can see the price of your coins and convert each other.
