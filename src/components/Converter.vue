@@ -44,8 +44,10 @@ export default {
 
 <style scoped>
 .converter {
-  padding: 20px;
   max-width: 300px;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 20px;
   box-shadow: 0 4px 8px 0px rgba(0, 0, 0, 0.2);
 }
 </style>
