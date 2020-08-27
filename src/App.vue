@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="container">
-      <h1>O que deseja?</h1>
+      <h1>What would you like to convert?</h1>
       <Converter />
     </div>
   </div>

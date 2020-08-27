@@ -3,12 +3,12 @@
     <select v-model="firstCoin">
       <option v-for="coin in coins" :key="coin">{{coin}}</option>
     </select>
-    to
+    <span>to</span>
     <select v-model="secondCoin">
       <option v-for="coin in coins" :key="coin">{{coin}}</option>
     </select>
     <input type="text" v-model="firstCoin_value" v-bind:placeholder="firstCoin" />
-    <input type="button" value="Convert" v-on:click="convert" />
+    <button type="button" v-on:click="convert">Convert</button>
     <h2>{{secondCoin}} {{secondCoin_value}}</h2>
   </div>
 </template>
@@ -57,7 +57,7 @@ export default {
       firstCoin: "USD",
       secondCoin: "BRL",
       firstCoin_value: "",
-      secondCoin_value: 0,
+      secondCoin_value: 0.0,
     };
   },
 
@@ -91,5 +91,50 @@ export default {
   border-radius: 5px;
   padding: 20px;
   box-shadow: 0 4px 8px 0px rgba(0, 0, 0, 0.2);
+}
+
+select {
+  font-size: 20pt;
+  font-weight: bold;
+  background-color: #fff;
+  color: #4bb543;
+  border: 0;
+  text-indent: 3px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+span {
+  font-size: 18pt;
+  font-weight: lighter;
+}
+
+input {
+  background-color: #fff;
+  border: 0;
+  border-bottom: 1px solid #4bb543;
+  padding: 5px;
+  margin-right: 5px;
+}
+
+button {
+  background-color: #4bb543;
+  border: 0;
+  border-radius: 4px;
+  padding: 6px;
+
+  font-size: 12pt;
+  color: #fff;
+
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #3a9133;
 }
 </style>
