@@ -18,8 +18,8 @@ export default {
     //
   }),
   components: {
-    Converter,
     Geolocation,
+    Converter,
   },
 };
 </script>

@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import GeoLocation from "./Geolocation";
 export default {
   name: "Converter",
 
@@ -55,7 +56,7 @@ export default {
         "MYR",
       ],
       firstCoin: "USD",
-      secondCoin: "BRL",
+      secondCoin: GeoLocation.regionCoin ? GeoLocation.regionCoin : "BRL",
       firstCoin_value: "",
       secondCoin_value: 0.0,
     };
