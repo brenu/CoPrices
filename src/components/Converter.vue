@@ -1,19 +1,61 @@
 <template>
   <div class="converter">
-    <h2>{{firstCoin}} to {{secondCoin}}</h2>
+    <select v-model="firstCoin">
+      <option v-for="coin in coins" :key="coin">{{coin}}</option>
+    </select>
+    to
+    <select v-model="secondCoin">
+      <option v-for="coin in coins" :key="coin">{{coin}}</option>
+    </select>
     <input type="text" v-model="firstCoin_value" v-bind:placeholder="firstCoin" />
     <input type="button" value="Convert" v-on:click="convert" />
-    <h2>{{secondCoin_value}}</h2>
+    <h2>{{secondCoin}} {{secondCoin_value}}</h2>
   </div>
 </template>
 
 <script>
 export default {
   name: "Converter",
-  props: ["firstCoin", "secondCoin"],
 
   data() {
     return {
+      coins: [
+        "CAD",
+        "HKD",
+        "ISK",
+        "PHP",
+        "EUR",
+        "DKK",
+        "HUF",
+        "CZK",
+        "AUD",
+        "RON",
+        "SEK",
+        "IDR",
+        "INR",
+        "BRL",
+        "RUB",
+        "HRK",
+        "JPY",
+        "THB",
+        "CHF",
+        "SGD",
+        "PLN",
+        "BGN",
+        "TRY",
+        "CNY",
+        "NOK",
+        "NZD",
+        "ZAR",
+        "USD",
+        "MXN",
+        "ILS",
+        "GBP",
+        "KRW",
+        "MYR",
+      ],
+      firstCoin: "USD",
+      secondCoin: "BRL",
       firstCoin_value: "",
       secondCoin_value: 0,
     };

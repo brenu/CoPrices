@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <div class="container">
-      <Converter first-coin="USD" second-coin="BRL" />
+      <h1>O que deseja?</h1>
+      <Converter />
     </div>
   </div>
 </template>
@@ -43,5 +44,10 @@ body,
   justify-content: center;
   align-items: center;
   background-color: #4bb543;
+}
+
+h1 {
+  font-size: 40pt;
+  color: #fff;
 }
 </style>
