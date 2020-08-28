@@ -3,14 +3,12 @@
     <div class="container">
       <h1>What would you like to convert?</h1>
       <Converter />
-      <Geolocation />
     </div>
   </div>
 </template>
 
 <script>
 import Converter from "./components/Converter";
-import Geolocation from "./components/Geolocation";
 
 export default {
   name: "App",
@@ -18,7 +16,6 @@ export default {
     //
   }),
   components: {
-    Geolocation,
     Converter,
   },
 };

@@ -1,10 +1,13 @@
 <template>
   <div class="geolocation" v-cloak>
-    <div v-if="errorStr">Sorry, but the following error occurred: {{errorStr}}</div>
+    <div v-if="errorStr">
+      Sorry, but the following error occurred: {{ errorStr }}
+    </div>
     <div v-if="regionCoin">
-      <p
-        class="geolocation-text"
-      >According to our location methods, the coin of your country is {{regionCoin}}. Is it right?</p>
+      <p class="geolocation-text">
+        According to our location methods, the coin of your country is
+        {{ regionCoin }}. Is it right?
+      </p>
     </div>
   </div>
 </template>
@@ -53,10 +56,8 @@ export default {
                 window.resolve("No match.");
               } else {
                 this.gettingLocation = false;
-                this.location = results[0].Result[0].Location;
-                console.log(results);
                 this.country = results[0].Result[0].Location.Address.Country;
-                this.getCoin();
+                return this.getCoin();
               }
             },
             (e) => window.reject(e)
@@ -76,15 +77,15 @@ export default {
         })
         .then((json) => {
           this.regionCoin = json.currencies[0].code;
-          console.log(this.regionCoin);
+          this.submit();
+          return this.regionCoin;
         });
+    },
+    submit() {
+      this.$emit("region-update", this.regionCoin);
     },
   },
   async created() {
-    if (!("Notification" in window)) {
-      alert("This browser does not support desktop notification");
-    }
-
     this.getLocation();
   },
 };

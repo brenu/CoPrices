@@ -1,23 +1,31 @@
 <template>
-  <div class="converter">
-    <select v-model="firstCoin">
-      <option v-for="coin in coins" :key="coin">{{coin}}</option>
-    </select>
-    <span>to</span>
-    <select v-model="secondCoin">
-      <option v-for="coin in coins" :key="coin">{{coin}}</option>
-    </select>
-    <input type="text" v-model="firstCoin_value" v-bind:placeholder="firstCoin" />
-    <button type="button" v-on:click="convert">Convert</button>
-    <h2>{{secondCoin}} {{secondCoin_value}}</h2>
+  <div class="converter-container">
+    <div class="converter">
+      <select v-model="firstCoin">
+        <option v-for="coin in coins" :key="coin">{{ coin }}</option>
+      </select>
+      <span>to</span>
+      <select v-model="secondCoin" v-on:region-update="handleRegionUpdate">
+        <option v-for="coin in coins" :key="coin">{{ coin }}</option>
+      </select>
+      <input
+        type="text"
+        v-model="firstCoin_value"
+        v-bind:placeholder="firstCoin"
+      />
+      <button type="button" v-on:click="convert">Convert</button>
+      <h2>{{ secondCoin }} {{ secondCoin_value }}</h2>
+    </div>
+
+    <Geolocation @region-update="handleRegionUpdate" />
   </div>
 </template>
 
 <script>
-import GeoLocation from "./Geolocation";
+import Geolocation from "../components/Geolocation";
+
 export default {
   name: "Converter",
-
   data() {
     return {
       coins: [
@@ -56,12 +64,14 @@ export default {
         "MYR",
       ],
       firstCoin: "USD",
-      secondCoin: GeoLocation.regionCoin ? GeoLocation.regionCoin : "BRL",
-      firstCoin_value: "",
+      secondCoin: "EUR",
+      firstCoin_value: "1",
       secondCoin_value: 0.0,
     };
   },
-
+  components: {
+    Geolocation,
+  },
   methods: {
     convert() {
       const url =
@@ -81,11 +91,25 @@ export default {
           ).toFixed(2);
         });
     },
+    handleRegionUpdate($event) {
+      this.secondCoin = $event;
+      this.convert();
+    },
+  },
+  created() {
+    this.convert();
   },
 };
 </script>
 
 <style scoped>
+.converter-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .converter {
   max-width: 300px;
   background-color: #fff;
