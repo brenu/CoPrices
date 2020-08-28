@@ -1,8 +1,6 @@
 <template>
   <div class="geolocation" v-cloak>
-    <div v-if="errorStr">
-      Sorry, but the following error occurred: {{ errorStr }}
-    </div>
+    <div v-if="errorStr">Sorry, but the following error occurred: {{ errorStr }}</div>
     <div v-if="regionCoin">
       <p class="geolocation-text">
         According to our location methods, the coin of your country is
@@ -96,8 +94,17 @@ export default {
   margin-top: 20px;
 }
 .geolocation-text {
-  width: 399px;
+  width: 340px;
   color: #fff;
+  align-self: center;
+  text-align: justify;
   font-size: 16pt;
+}
+
+@media (min-width: 700px) {
+  .geolocation-text {
+    width: 399px;
+    text-align: center;
+  }
 }
 </style>
