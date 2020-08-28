@@ -37,7 +37,7 @@ body,
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #929002;
 }
 
 .container {
@@ -51,7 +51,13 @@ body,
 }
 
 h1 {
-  font-size: 40pt;
+  font-size: 20pt;
   color: #fff;
+}
+
+@media (min-width: 1100px) {
+  h1 {
+    font-size: 40pt;
+  }
 }
 </style>
